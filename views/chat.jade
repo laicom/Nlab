@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    script(src='/javascripts/socket.io.js')
+    script(src='/javascripts/jquery-1.4.1.min.js')
+
+    table
+    tr
+      td
+        textarea#chatArea(rows='18',cols='80')
+      td
+        div#OnlineList
+    tr
+      td(colspan='2')
+        input#txtMsg(type='text',value='',size='88')
+        input#btnSend(type='button',value='send')
+
+      script(language='javascript').
+        var socket = io.connect('http://localhost:3000');
+        socket.on('news', function (data) {
+            console.log(data);
+        });
+        socket.on('message',function(msg){
+            alert(msg);
+        });
+        $('#btnSend').onclick=function()
+        try{
+            var msg=$('#txtMsg').value;
+            alert(msg);
+            socket.emit('message',msg);
+        }
+        catch(e){alert(e.message);}
+
+     
+

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    ul
+    for item in list.folders
+        li
+            img(src='/images/folder1.gif')
+            a(href='/shared/list/'+item.fullPath)=item.name
+    for item in list.files
+        li
+            img(src='/images/note.gif')
+            a(href='/shared/down/'+item.fullPath)=item.name
+    div
+        form(method='post',enctype='multipart/form-data',action='/shared/upload/'+list.path)
+            input(type='file',name='fileToUpload')
+            input(type='submit',name='btnUpload',value="upload")
