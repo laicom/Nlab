@@ -7,6 +7,7 @@ module.exports=function(app)
       res.render('index', { title: 'N-lab' });
     });
     app.get('/chat', function(req,res){
+        chat.start(app);
         res.render('chat', { title: 'N-lab chat room' });
     });
 
@@ -14,7 +15,7 @@ module.exports=function(app)
 
     shared.routes(app);
 
-    chat.start(app);
+    //chat.start(app);
         /*
         app.get('/shared/:cmd/:prm(*)', shared.routes);
 

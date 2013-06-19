@@ -25,13 +25,12 @@ exports.routes=function(app){
                 next();
         }
     });
-
     app.get('/shared', function(req,res){
-        //res.redirect('/shared/getFileList/');
+        //res.redirect('http://localhost:3000/shared/list/');
         renderPathList(req,res,"");
     });
 
-    app.post('/shared/upload/:pathprm(*)',function(req,res,next){
+    app.post('/shared/list/:pathprm(*)',function(req,res,next){
             if(req.files && req.files.fileToUpload)
             {
                 var virPath=req.param('pathprm'),

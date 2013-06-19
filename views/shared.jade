@@ -11,6 +11,6 @@ block content
             img(src='/images/note.gif')
             a(href='/shared/down/'+item.fullPath)=item.name
     div
-        form(method='post',enctype='multipart/form-data',action='/shared/upload/'+list.path)
+        form(method='post',enctype='multipart/form-data',action='/shared/list/'+list.path)
             input(type='file',name='fileToUpload')
             input(type='submit',name='btnUpload',value="upload")

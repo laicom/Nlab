@@ -17,19 +17,20 @@ block content
 
       script(language='javascript').
         var socket = io.connect('http://localhost:3000');
+        $('#btnSend').click(function(){
+            try{
+                var msg=$('#txtMsg').val();
+                alert(msg);
+                socket.emit('message',msg);
+            }
+            catch(e){alert(e.message);}
+        });
         socket.on('news', function (data) {
             console.log(data);
         });
         socket.on('message',function(msg){
             alert(msg);
         });
-        $('#btnSend').onclick=function()
-        try{
-            var msg=$('#txtMsg').value;
-            alert(msg);
-            socket.emit('message',msg);
-        }
-        catch(e){alert(e.message);}
 
      
 

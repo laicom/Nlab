@@ -1,5 +1,5 @@
 var http= require('http')
-    ,socketio=require('socket.io');
+    ,socketIO=require('socket.io');
 
 var started=false;
 exports.start=function(app)
@@ -7,7 +7,7 @@ exports.start=function(app)
     if(started)return;
 
     var svr =http.createServer(app),
-        io=socketio.listen(svr);
+        io=socketIO.listen(svr);
 
     io.sockets.on('connection',function(sok){
         sok.broadcast.emit('message','welcome new friend');
